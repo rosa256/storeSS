@@ -16,9 +16,9 @@ public class Product {
     @Id
     private Integer id;
     private String name;
-    private String pictureURL;
+    private ProductCategory category;
     private String description;
     private BigDecimal price;
+    private boolean isRecommended;
 
-    private ProductCategory productCategory;
 }

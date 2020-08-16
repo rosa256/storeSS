@@ -1,11 +1,16 @@
 package com.julkamtonosi.storeSS.services;
 
 import com.julkamtonosi.storeSS.models.Product;
+import com.julkamtonosi.storeSS.models.ProductCategory;
 import com.julkamtonosi.storeSS.repositories.ProductRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 @Service
 public class ProductService {
@@ -23,9 +28,11 @@ public class ProductService {
         //TODO: Find Recommended products
         List<Product> productList = productRepository.findAll();
         List<Product> recommendedProducts = new ArrayList<>();
-        recommendedProducts.add(productList.get(productList.size()-1));
-        recommendedProducts.add(productList.get(productList.size()-2));
-        recommendedProducts.add(productList.get(productList.size()-3));
+
+        for(Product p : productList){
+            if (p.isRecommended())
+                recommendedProducts.add(p);
+        }
         return recommendedProducts;
     }
 
@@ -33,4 +40,9 @@ public class ProductService {
         for (Product p: products)
             productRepository.save(p);
     }
+    public List<ProductCategory> getCategories(){
+        List<ProductCategory> products = productRepository.findDistinctProd();
+
+      return products;
+    };
 }
