@@ -37,17 +37,17 @@ public class ProductController {
     public void addProducts(){
         List<Product> products = new ArrayList<>();
         products.add(new Product(1,"Bluza 40",ProductCategory.BLUZA, "picture1",new BigDecimal(10), false));
-        products.add(new Product(2,"Koszulka 40",ProductCategory.TSHIRT, "picture2",new BigDecimal(10), false));
-        products.add(new Product(3,"Kurtka 40",ProductCategory.KURTKA, "picture3",new BigDecimal(10), false));
+        products.add(new Product(2,"Bluza 40",ProductCategory.BLUZA, "picture4",new BigDecimal(10), false));
+        products.add(new Product(3,"Bluza 40(R)",ProductCategory.BLUZA, "picture7",new BigDecimal(10), true));
 
-        products.add(new Product(4,"Bluza 40",ProductCategory.BLUZA, "picture4",new BigDecimal(10), false));
-        products.add(new Product(5,"Koszulka 40",ProductCategory.TSHIRT, "picture5",new BigDecimal(10), false));
-        products.add(new Product(6,"Kurtka 40",ProductCategory.KURTKA, "picture6",new BigDecimal(10), false));
+        products.add(new Product(4,"T-Shirt EKIPA Flowers Biały","t-shirt-ekipa-flowers-bialy", ProductCategory.TSHIRT, "picture2",new BigDecimal(10), false));
+        products.add(new Product(5,"T-Shirt EKIPA Flowers Czarny","t-shirt-ekipa-flowers-czarny", ProductCategory.TSHIRT, "picture5",new BigDecimal(10), false));
+        products.add(new Product(6,"T-Shirt EKIPA Signs Czarny","t-shirt-ekipa-signs-czarny",ProductCategory.TSHIRT, "picture8",new BigDecimal(10), true));
 
         //Recommended
-        products.add(new Product(7,"Bluza 40(R)",ProductCategory.BLUZA, "picture7",new BigDecimal(10), true));
-        products.add(new Product(8,"Koszulka 40(R)",ProductCategory.TSHIRT, "picture8",new BigDecimal(10), true));
-        products.add(new Product(9,"Kurtka 40(R)",ProductCategory.BLUZA, "picture9",new BigDecimal(10), true));
+        products.add(new Product(7,"Kurtka 40",ProductCategory.GADZET, "picture6",new BigDecimal(10), false));
+        products.add(new Product(8,"Kurtka 40",ProductCategory.GADZET, "picture3",new BigDecimal(10), false));
+        products.add(new Product(9,"Kurtka 40(R)",ProductCategory.GADZET, "picture9",new BigDecimal(10), true));
 
         productService.addProducts(products);
     }
