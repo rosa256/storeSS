@@ -36,18 +36,16 @@ public class ProductController {
     @GetMapping("/addProducts")
     public void addProducts(){
         List<Product> products = new ArrayList<>();
-        products.add(new Product(1,"Bluza 40",ProductCategory.BLUZA, "picture1",new BigDecimal(10), false));
-        products.add(new Product(2,"Bluza 40",ProductCategory.BLUZA, "picture4",new BigDecimal(10), false));
-        products.add(new Product(3,"Bluza 40(R)",ProductCategory.BLUZA, "picture7",new BigDecimal(10), true));
+        products.add(new Product(1,"Bluza 40","bluza-ekipatonosi-kolor-40",ProductCategory.BLUZA, "picture1",new BigDecimal(10), false));
+        products.add(new Product(2,"Bluza 40","bluza-kameleon-czarna",ProductCategory.BLUZA, "picture4",new BigDecimal(10), false));
 
         products.add(new Product(4,"T-Shirt EKIPA Flowers Biały","t-shirt-ekipa-flowers-bialy", ProductCategory.TSHIRT, "picture2",new BigDecimal(10), false));
         products.add(new Product(5,"T-Shirt EKIPA Flowers Czarny","t-shirt-ekipa-flowers-czarny", ProductCategory.TSHIRT, "picture5",new BigDecimal(10), false));
         products.add(new Product(6,"T-Shirt EKIPA Signs Czarny","t-shirt-ekipa-signs-czarny",ProductCategory.TSHIRT, "picture8",new BigDecimal(10), true));
 
         //Recommended
-        products.add(new Product(7,"Kurtka 40",ProductCategory.GADZET, "picture6",new BigDecimal(10), false));
-        products.add(new Product(8,"Kurtka 40",ProductCategory.GADZET, "picture3",new BigDecimal(10), false));
-        products.add(new Product(9,"Kurtka 40(R)",ProductCategory.GADZET, "picture9",new BigDecimal(10), true));
+        products.add(new Product(7,"Brelok Mini Majk","brelok-mini-majk", ProductCategory.GADZET, "picture6",new BigDecimal(10), false));
+        products.add(new Product(8,"Kubek Friz","kubek-friz", ProductCategory.GADZET, "picture3",new BigDecimal(10), false));
 
         productService.addProducts(products);
     }
