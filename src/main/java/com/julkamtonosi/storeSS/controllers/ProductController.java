@@ -36,8 +36,8 @@ public class ProductController {
     @GetMapping("/addProducts")
     public void addProducts(){
         List<Product> products = new ArrayList<>();
-        products.add(new Product(1,"Bluza 40","bluza-ekipatonosi-kolor-40",ProductCategory.BLUZA, "picture1",new BigDecimal(10), false));
-        products.add(new Product(2,"Bluza 40","bluza-kameleon-czarna",ProductCategory.BLUZA, "picture4",new BigDecimal(10), false));
+        products.add(new Product(1,"Bluza EKIPATONOSI KOLOR 40","bluza-ekipatonosi-kolor-40",ProductCategory.BLUZA, "picture1",new BigDecimal(10), false));
+        products.add(new Product(2,"Bluza Kameleon Czarna","bluza-kameleon-czarna",ProductCategory.BLUZA, "picture4",new BigDecimal(10), false));
 
         products.add(new Product(4,"T-Shirt EKIPA Flowers Biały","t-shirt-ekipa-flowers-bialy", ProductCategory.TSHIRT, "picture2",new BigDecimal(10), false));
         products.add(new Product(5,"T-Shirt EKIPA Flowers Czarny","t-shirt-ekipa-flowers-czarny", ProductCategory.TSHIRT, "picture5",new BigDecimal(10), false));
