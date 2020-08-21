@@ -28,7 +28,7 @@ public class ImageController {
             produces = MediaType.IMAGE_JPEG_VALUE)
     public ResponseEntity<InputStreamResource> getImageLink(@PathVariable String category, @PathVariable String nameUrl) throws IOException {
         category = category.toLowerCase();
-        ClassPathResource imgFile = new ClassPathResource("static/products/"+ category +"/"+ nameUrl);
+        ClassPathResource imgFile = new ClassPathResource("static/products/"+ category +"/"+ nameUrl + "/"+ nameUrl + ".jpg");
 
         return ResponseEntity
                 .ok()
