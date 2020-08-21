@@ -32,13 +32,9 @@ public class ProductService {
         return recommendedProducts;
     }
 
-    public List<String> getProductsNameURLsByCategory(String category){
+    public List<Product> getProductsByCategory(String category){
         List<Product> productsByCategory = productRepository.findAllByCategory(ProductCategory.valueOf(category));
-        List<String> productNameURLs = new ArrayList<>();
-        for (Product product:productsByCategory) {
-            productNameURLs.add(product.getNameUrl());
-        }
-        return productNameURLs;
+        return productsByCategory;
     }
 
     public void addProducts(List<Product> products){

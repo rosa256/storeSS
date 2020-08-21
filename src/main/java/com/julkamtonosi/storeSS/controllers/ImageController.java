@@ -1,5 +1,6 @@
 package com.julkamtonosi.storeSS.controllers;
 
+import com.julkamtonosi.storeSS.models.Product;
 import com.julkamtonosi.storeSS.models.ProductCategory;
 import com.julkamtonosi.storeSS.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +29,13 @@ public class ImageController {
             produces = MediaType.IMAGE_JPEG_VALUE)
     public ResponseEntity<InputStreamResource> getImageLink(@PathVariable String category, @PathVariable String nameUrl) throws IOException {
         category = category.toLowerCase();
-        ClassPathResource imgFile = new ClassPathResource("static/products/"+ category +"/"+ nameUrl + "/"+ nameUrl + ".jpg");
+        ClassPathResource imgFile;
+        if(nameUrl.contains("hovered")){
+            nameUrl = nameUrl.replace("-hovered","");
+            imgFile = new ClassPathResource("static/products/"+ category +"/"+ nameUrl + "/"+ nameUrl + "-hovered.jpg");
+        }else{
+            imgFile = new ClassPathResource("static/products/"+ category +"/"+ nameUrl + "/"+ nameUrl + ".jpg");
+        }
 
         return ResponseEntity
                 .ok()
@@ -38,22 +45,21 @@ public class ImageController {
 
     @RequestMapping(value = "/kategoria/{category}", method = RequestMethod.GET,
             produces = MediaType.IMAGE_JPEG_VALUE)
-    public ResponseEntity<List<String>> getProductsImageLinkByCategory(@PathVariable String category) throws IOException {
-        List<String> productsNameURLs = productService.getProductsNameURLsByCategory(category);
-        List<String> productImageLinks = createImageLinks(productsNameURLs, category);
+    public ResponseEntity<List<Product>> getProductsImageLinkByCategory(@PathVariable String category) throws IOException {
+        List<Product> productsByCategory = productService.getProductsByCategory(category);
+        setFullImageLinkForProducts(productsByCategory, category);
+
         return ResponseEntity
                 .ok()
                 .contentType(MediaType.APPLICATION_JSON)
-                .body(productImageLinks);
+                .body(productsByCategory);
     }
 
-    private List<String> createImageLinks(List<String> productsNameURLs, String category) {
-        List<String> imageLinks = new ArrayList<>();
-        for(String productNameURL : productsNameURLs) {
-            String imageLink = "/kategoria/" + category + "/" + productNameURL;
-            imageLinks.add(imageLink);
+    private void setFullImageLinkForProducts(List<Product> products, String category) {
+        for(Product product : products) {
+            String fullImageLink = "http://localhost:8080/kategoria/" + category + "/" + product.getNameUrl();
+            product.setNameUrl(fullImageLink);
+            product.setHoveredNameUrl(fullImageLink + "-hovered");
         }
-
-        return imageLinks;
     }
 }
