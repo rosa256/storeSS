@@ -11,7 +11,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 @CrossOrigin("*")
@@ -58,8 +57,8 @@ public class ImageController {
     private void setFullImageLinkForProducts(List<Product> products, String category) {
         for(Product product : products) {
             String fullImageLink = "http://localhost:8080/kategoria/" + category + "/" + product.getNameUrl();
-            product.setNameUrl(fullImageLink);
-            product.setHoveredNameUrl(fullImageLink + "-hovered");
+            product.setImageUrl(fullImageLink);
+            product.setHoveredImageUrl(fullImageLink + "-hovered");
         }
     }
 }

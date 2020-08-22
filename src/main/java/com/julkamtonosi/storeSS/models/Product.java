@@ -17,7 +17,8 @@ public class Product {
     private Integer id;
     private String name;
     private String nameUrl;
-    private String hoveredNameUrl; // image showing on mouse hover. *Not required*
+    private String imageUrl;
+    private String hoveredImageUrl; // image showing on mouse hover. *Not required*
     private ProductCategory category;
     private String description;
     private BigDecimal price;
