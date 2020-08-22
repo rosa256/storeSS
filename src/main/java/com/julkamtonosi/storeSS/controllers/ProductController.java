@@ -4,9 +4,9 @@ import com.julkamtonosi.storeSS.models.Product;
 import com.julkamtonosi.storeSS.models.ProductCategory;
 import com.julkamtonosi.storeSS.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -56,6 +56,18 @@ public class ProductController {
         categoriesList = productService.getCategories();
 
         return categoriesList;
+    }
+
+    @RequestMapping(value="/kategoria/{category}/{productNameUrl}", method = RequestMethod.GET)
+    public ResponseEntity<Product> getProductDetails(@PathVariable String category,@PathVariable String productNameUrl){
+        Product product = productService.getProductDetails(productNameUrl);
+        System.out.println(productNameUrl);
+        System.out.println(product.getNameUrl());
+        System.out.println(product.getCategory());
+        return ResponseEntity
+                .ok()
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(product);
     }
 
 }

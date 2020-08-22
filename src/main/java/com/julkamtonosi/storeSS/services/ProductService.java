@@ -46,4 +46,8 @@ public class ProductService {
 
       return products;
     };
+
+    public Product getProductDetails(String nameUrl) {
+        return productRepository.findByNameUrl(nameUrl);
+    }
 }
