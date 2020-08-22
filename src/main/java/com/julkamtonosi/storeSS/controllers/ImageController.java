@@ -24,7 +24,7 @@ public class ImageController {
         this.productService = productService;
     }
 
-    @RequestMapping(value = "/kategoria/{category}/{nameUrl}", method = RequestMethod.GET,
+    @RequestMapping(value = "/img/kategoria/{category}/{nameUrl}", method = RequestMethod.GET,
             produces = MediaType.IMAGE_JPEG_VALUE)
     public ResponseEntity<InputStreamResource> getImageLink(@PathVariable String category, @PathVariable String nameUrl) throws IOException {
         category = category.toLowerCase();
@@ -56,7 +56,7 @@ public class ImageController {
 
     private void setFullImageLinkForProducts(List<Product> products, String category) {
         for(Product product : products) {
-            String fullImageLink = "http://localhost:8080/kategoria/" + category + "/" + product.getNameUrl();
+            String fullImageLink = "http://localhost:8080/img/kategoria/" + category + "/" + product.getNameUrl();
             product.setImageUrl(fullImageLink);
             product.setHoveredImageUrl(fullImageLink + "-hovered");
         }
