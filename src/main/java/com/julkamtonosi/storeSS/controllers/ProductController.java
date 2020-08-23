@@ -61,9 +61,6 @@ public class ProductController {
     @RequestMapping(value="/kategoria/{category}/{productNameUrl}", method = RequestMethod.GET)
     public ResponseEntity<Product> getProductDetails(@PathVariable String category,@PathVariable String productNameUrl){
         Product product = productService.getProductDetails(productNameUrl);
-        System.out.println(productNameUrl);
-        System.out.println(product.getNameUrl());
-        System.out.println(product.getCategory());
         return ResponseEntity
                 .ok()
                 .contentType(MediaType.APPLICATION_JSON)
